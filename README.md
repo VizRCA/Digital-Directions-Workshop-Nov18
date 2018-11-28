@@ -1,6 +1,8 @@
 # Digital-Directions-Workshop-Nov18
 Workshop on Unity covering basic API awareness, some scripting, and use of creative coding tools Klak.
 
+Download link https://github.com/VizRCA/Digital-Directions-Workshop-Nov18
+
 ## Overview
 
 + Intro to unity, swift run through, tell me what you know and don't know! 45m
