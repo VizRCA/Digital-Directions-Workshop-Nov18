@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class RotateTranslate : MonoBehaviour
 {
+    public Vector3 translateAmt = Vector3.zero;
+    [SerializeField] Vector3 rotateAmt = Vector3.zero;
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    float scaler = .5f;
     // Use this for initialization
     void Start()
     {
@@ -15,8 +20,8 @@ public class RotateTranslate : MonoBehaviour
     void Update()
     {
 
-        transform.Rotate(1, 1, 0);
-        transform.Translate(0.01f, 0, 0);
+        transform.Rotate(rotateAmt);
+        transform.Translate(translateAmt * Time.deltaTime * scaler);
 
     }
 

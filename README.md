@@ -307,12 +307,12 @@ while( t < maxTime ){
     else if (x >= 5 && x < 25 )
     {
         status = "counting, between 5 and 25";
-        t++;
+        t = t + 1;
     }
     else
     {
         status = "counting, between 25 and 30";
-        t++;
+        t += 1;
     }
 }
 status = "counting complete";

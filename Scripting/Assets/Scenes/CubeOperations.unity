@@ -729,6 +729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edebcb31eba9543b58b078cd7158d7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  translateAmt: {x: 2, y: 1, z: 0}
+  rotateAmt: {x: 5, y: 0, z: 5}
+  scaler: 0
 --- !u!23 &1565428059
 MeshRenderer:
   m_ObjectHideFlags: 0

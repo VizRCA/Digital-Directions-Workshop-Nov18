@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateCubes : MonoBehaviour {
-    
+    // 
     private GameObject holder; 
     private GameObject[] objArr = new GameObject[5];
     private Vector3 defPos = new Vector3 (0,0,0);
@@ -17,7 +17,8 @@ public class RotateCubes : MonoBehaviour {
     void Start () {
         holder = GameObject.Find("CubeHolder");
         defPos = holder.transform.localPosition;
-        for (int i = 0; i < objArr.Length; i++) {
+        for (int i = 0; i < objArr.Length; i++) 
+        {
             objArr[i] = GameObject.CreatePrimitive(PrimitiveType.Cube);
             objArr[i].transform.localScale = scale;
             objArr[i].transform.localPosition = holder.transform.localPosition;
@@ -49,8 +50,19 @@ public class RotateCubes : MonoBehaviour {
         c_rot += 0.05f;
 
         for (int i = 0; i < objArr.Length; i++) {
-            objArr[i].transform.localPosition = new Vector3 (defPos.x+Mathf.Sin(c_rot)*2, defPos.y+Mathf.Cos(c_rot)*2, defPos.z);
-            objArr[i].transform.Rotate((i+1)*0.1f, (i+1)*0.2f, (i+1)*0.3f);
+            
+            objArr[i].transform.localPosition = new Vector3 (
+                defPos.x+Mathf.Sin(c_rot)*2, 
+                defPos.y+Mathf.Cos(c_rot)*2, 
+                defPos.z
+            );
+
+            objArr[i].transform.Rotate(
+                (i+1)*0.1f, 
+                (i+1)*0.2f, 
+                (i+1)*0.3f
+            );
+
             objArr[i].transform.localScale = Vector3.Scale(scale,Vector3.one*scaler);
         }
 
