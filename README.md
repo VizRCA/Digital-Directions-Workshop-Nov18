@@ -361,6 +361,11 @@ for (int i = 0; i < numbers.Length; i++)
 
 For those familiar with *Processing* or other Creative Coding platforms, *Unity* presents a different problem. Firstly its a different language, a sub-set of C#. In *Processing* you have two places where the action happens ```setup()``` & ```draw()```, in *Unity* the action happens everywhere! Each ```GameObject``` has its own version ```setup()``` & ```draw()``` within the ```MonoBehaviour``` class. This setup is a modified form of the Entity-Component-System (ECS) architecture. Its not true ECS because data and behaviour are linked together on the same class.
 
+Key points:
+
++ **Everything is on a GameObject**
++ **Scripts allow access to behaviours and processes on GameObject's in scripts**
+
 ### Scripts
 
 Scripts allow custom behaviours to GameObjects. You can just download and use them or make your own. In Unity you can write scripts using the C# language, you can write in others but I won't cover them.
@@ -381,6 +386,31 @@ Unity executes the same order on all ```GameObjects```, but some stuff happens o
 `Vector3` - holds cartesian coordinates X,Y,Z. These are float values. Positions and euler rotations are most common use of this class.
 
 `Quaternion` - freaky space physics way of doing rotations. 4D object X,Y,Z,W
+
+### Debugging
+
+You can send yourself messages to the console using a command, this allows you to check what and when something is happening.
+
+```csharp
+public class Debugger : MonoBehaviour {
+    int counter;
+    // Use this for initialization
+    void Start () {
+        Debug.Log("This script has started");
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        if ( Random.value > 0.8f ) // <- 20% probability
+        {
+            counter++;
+            Debug.Log( "Counter value: " + counter);
+        }
+    }
+
+}
+```
 
 ### Make a rotator script
 + Create a cube in the scene
@@ -513,5 +543,24 @@ public class ObjectController : MonoBehaviour {
 	}
 }
 ```
+### Parent child relationships
 
-#### Events
+You can access objects in the hierarchy through code. Every GameObject in a scene can be found using a common set of methods.
+
+```csharp
+public class AnimationController : MonoBehaviour
+{
+    Animator animator; // <- Declare the variable for private use.
+
+    void Start()
+    {
+        animator = GetComponent<Animator>(); // <- there must be a AnimationController for this to work!
+    }
+
+    void OnEnable(){
+        animator.SetTrigger("Move"); // <- Must be animation state in the controller called Move
+    }
+}
+```
+
+### Events
